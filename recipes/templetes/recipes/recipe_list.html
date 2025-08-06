@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+<title>Lista de Receitas</title>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Receitas Cadastradas</h1>
+    {% for recipe in recipes %}
+    <div class="recipe-item">
+        {%if recipe.image %}
+        <img src="{{ recipe.image.url }}" alt="">
+        {% endfor %}
+        <div class="recipe-content">
+            <h2><a href="{% ulr'recipe_detail'  recipe.pk%}">{{recipe.title}}</a></h2>
+            <p><strong>Tempo de preparo:</strong> {{ recipe.cooking_time }} minutos</p>
+            <p><strong>Ingredientes:</strong> {{ recipe.ingredients }}</p>
+            <p><strong>Instruções:</strong> {{ recipe.instructions }}</p>
+            {% empty %}
+            <p>Nenhuma receita cadastrada.</p>
+            {% endfor %}
+        </div>
+    </div>
+    <hr>
+    {% empty %}
+    <p class="empty-message">Nenhuma Receita Cadastrada.</p>
+    {% endfor %}
+</div>
+
+
+
+<style>
+    body {
+        font-family:'inter' , sans-serif;
+        background-color: #f3f4f6;
+        color: #374151;
+        line-height: 1.6;
+    }
+    .container{
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: #ffffff;
+        border-radius: 0.75rem; /*rounded-xl*/
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /*shadow-md*/
+    }
+    h1 {
+        color: #1f2937; /*text-gray-900*/
+        font-size: 2.25rem; /*text-4xl*/
+        font-weight: 700; /*font-bold*/
+        margin-bottom: 1.5rem; /*mb-6*/
+        text-align: center;
+    }
+    .recipe-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem; 
+        margin-bottom: 1.5rem; 
+    }
+    .recipe-item img {
+        width: 96px; 
+        height: 96px; 
+        object-fit: cover; 
+        border-radius: 0.5rem; /*rounded-md*/
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /*shadow-sm*/
+    }
+    .recipe-content {
+        flex-grow: 1; 
+    }
+    h2 {
+        color: #111827; /*text-gray-900*/
+        font-size: 1.5rem; /*text-2xl*/
+        font-weight: 600; /*font-semibold*/
+        margin-bottom: 0.5rem; /*mb-2*/
+    }
+
+    h2 a {
+        text-decoration: none;
+        color:#4f46e5;
+        transition: color 0.2s ease_in_out;
+    }
+
+    h2 a:hover {
+        color: #3730a3; 
+        text-decoration: underline;/*text-indigo-700*/
+    } 
+
+    p {
+        margin-bottom: 0.5rem; /*mb-2*/
+    }
+
+    strong{
+        font-weight: 600;
+    }
+
+    hr {
+        border-top: 1px solid #e5e7eb;/*border-gray-200*/
+        margin-top: 1.5rem 0; /*my-6*/
+        margin-bottom: 1.5rem; /*mb-6*/
+    }
+
+    .empty-message {
+        text-align: center;
+        color: #6b7280; /*text-gray-500*/
+        font-style: italic; /*text-lg*/
+        margin-top: 2rem; /*mt-8*/
+        color: #6b7280;
+        padding: 1rem;
+        border: 1px dashed #d1d5db; /*border-gray-300*/
+        border-radius: 0.5rem; /*rounded-md*/
+    }
+</style>
+</body>
+</html>
+

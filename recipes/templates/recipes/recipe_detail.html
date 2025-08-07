@@ -55,17 +55,17 @@
  <div class="container">
     <a href="{% url 'recipe_list'%}" class="back-link">Voltar para a lista de receitas</a>
     <h1>{{receita.titulo}}</h1>
-    {% if receita.imagem%}
-    <img src="{{receita.imagem.url}}" alt="imagem de {{receita.titulo}}">
+    {% if recipe.image%}
+    <img src="{{recipe.image.url}}" alt="imagem de {{receita.titulo}}">
     {% endif %}
 
-    <p><strong>Tempo de preparo:</strong>{{receita.cooking_time}} minutos</p>
+    <p><strong>Tempo de preparo:</strong>{{recipe.cooking_time}} minutos</p>
 
     <h2>Ingredientes:</h2>
-    <p>{{receita.ingredients}}</p>
+    <p>{{recipe.ingredients}}</p>
 
     <h2>instruções</h2>
-    <p>{{receita.instrution}}</p>
+    <p>{{recipe.instructions}}</p>
 
     <a href="{% url 'recipe_list' %}" class="back-link">Voltar para a lista de receitas</a>
  </div>   
